@@ -1,45 +1,41 @@
-import Slopes from "slopes"
-import BinTools from "slopes/typings/slopes/src/utils/bintools"
-import * as Ins from "slopes/typings/slopes/src/apis/avm/inputs"
-import * as Keys from "slopes/typings/slopes/src/apis/avm/keychain"
-import * as Outs from "slopes/typings/slopes/src/apis/avm/outputs"
-import * as Txs from "slopes/typings/slopes/src/apis/avm/tx"
-import * as Types from "slopes/typings/slopes/src/apis/avm/types"
-import * as UTXOs from "slopes/typings/slopes/src/apis/avm/utxos"
+import {Slopes, BinTools, UnixNow, AVM, UTXO, UTXOSet, Input, AVMKeyPair, AVMKeyChain, OutCreateAsset, OutPayment, OutTakeOrLeave, TxUnsigned, Tx, Address, PersistanceOptions, SigIdx, Signature} from "slopes"
 import BN from 'bn.js';
 import { Buffer } from 'buffer/';
 
-let bintools:BinTools = BinTools.getInstance();
+let bintools = BinTools.getInstance();
 
 let s:Slopes = new Slopes("localhost", 9650);
 
-let utxoset:UTXOs.UTXOSet = new UTXOs.UTXOSet();
+let utxoset:UTXOSet = new UTXOSet();
 
-let u:Array<UTXOs.UTXO>;
+let u:Array<UTXO>;
 
-u.push(new UTXOs.UTXO());
+u.push(new UTXO());
 
-let input:Ins.Input = new Ins.Input();
+let input:Input = new Input();
 
-let kp:Keys.AVMKeyPair = new Keys.AVMKeyPair();
+let kp:AVMKeyPair = new AVMKeyPair();
 
-let kc:Keys.AVMKeyChain = new Keys.AVMKeyChain();
+let kc:AVMKeyChain = new AVMKeyChain();
 
-let outputCA:Outs.OutCreateAsset = new Outs.OutCreateAsset();
+let outputCA:OutCreateAsset = new OutCreateAsset();
 
-let outputPay:Outs.OutPayment = new Outs.OutPayment(bintools.b58ToBuffer("madeup1"));
+let outputPay:OutPayment = new OutPayment(bintools.b58ToBuffer("madeup1"));
 
-let outputTOL:Outs.OutTakeOrLeave = new Outs.OutTakeOrLeave(Buffer.from("madeup2", "utf8"));
+let outputTOL:OutTakeOrLeave = new OutTakeOrLeave(Buffer.from("madeup2", "utf8"));
 
-let utx:Txs.TxUnsigned = new Txs.TxUnsigned();
+let utx:TxUnsigned = new TxUnsigned();
 
-let tx:Txs.Tx = new Txs.Tx();
+let tx:Tx = new Tx();
 
-let addr:Types.Address = new Types.Address();
+let addr:Address = new Address();
 
-let sigidx:Types.SigIdx = new Types.SigIdx();
+let sigidx:SigIdx = new SigIdx();
 
-let sig:Types.Signature = new Types.Signature();
+let sig:Signature = new Signature();
 
-let utc:BN = Types.UnixNow();
+let utc:BN = UnixNow();
 
+let po:PersistanceOptions = new PersistanceOptions("a", false, "union");
+
+let avm:AVM = new AVM(s);

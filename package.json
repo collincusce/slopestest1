@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "slopes": "^1.0.14"
+    "slopes": "^1.1.0"
   },
   "devDependencies": {
     "typescript": "^3.7.5"
