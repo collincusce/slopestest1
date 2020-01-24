@@ -1,41 +1,41 @@
-import {Slopes, BinTools, UnixNow, AVM, UTXO, UTXOSet, Input, AVMKeyPair, AVMKeyChain, OutCreateAsset, OutPayment, OutTakeOrLeave, TxUnsigned, Tx, Address, PersistanceOptions, SigIdx, Signature} from "slopes"
+import * as slopes from "slopes"
 import BN from 'bn.js';
 import { Buffer } from 'buffer/';
 
-let bintools = BinTools.getInstance();
+let bintools = slopes.BinTools.getInstance();
 
-let s:Slopes = new Slopes("localhost", 9650);
+let s:slopes.Slopes = new slopes.Slopes("localhost", 9650);
 
-let utxoset:UTXOSet = new UTXOSet();
+let utxoset:slopes.UTXOSet = new slopes.UTXOSet();
 
-let u:Array<UTXO>;
+let u:Array<slopes.UTXO>;
 
-u.push(new UTXO());
+u.push(new slopes.UTXO());
 
-let input:Input = new Input();
+let input:slopes.Input = new slopes.Input();
 
-let kp:AVMKeyPair = new AVMKeyPair();
+let kp:slopes.AVMKeyPair = new slopes.AVMKeyPair();
 
-let kc:AVMKeyChain = new AVMKeyChain();
+let kc:slopes.AVMKeyChain = new slopes.AVMKeyChain();
 
-let outputCA:OutCreateAsset = new OutCreateAsset();
+let outputCA:slopes.OutCreateAsset = new slopes.OutCreateAsset();
 
-let outputPay:OutPayment = new OutPayment(bintools.b58ToBuffer("madeup1"));
+let outputPay:slopes.OutPayment = new slopes.OutPayment(bintools.b58ToBuffer("madeup1"));
 
-let outputTOL:OutTakeOrLeave = new OutTakeOrLeave(Buffer.from("madeup2", "utf8"));
+let outputTOL:slopes.OutTakeOrLeave = new slopes.OutTakeOrLeave(Buffer.from("madeup2", "utf8"));
 
-let utx:TxUnsigned = new TxUnsigned();
+let utx:slopes.TxUnsigned = new slopes.TxUnsigned();
 
-let tx:Tx = new Tx();
+let tx:slopes.Tx = new slopes.Tx();
 
-let addr:Address = new Address();
+let addr:slopes.Address = new slopes.Address();
 
-let sigidx:SigIdx = new SigIdx();
+let sigidx:slopes.SigIdx = new slopes.SigIdx();
 
-let sig:Signature = new Signature();
+let sig:slopes.Signature = new slopes.Signature();
 
-let utc:BN = UnixNow();
+let utc:BN = slopes.UnixNow();
 
-let po:PersistanceOptions = new PersistanceOptions("a", false, "union");
+let po:slopes.PersistanceOptions = new slopes.PersistanceOptions("a", false, "union");
 
-let avm:AVM = new AVM(s);
+let avm:slopes.AVM = new slopes.AVM(s);
