@@ -51,3 +51,6 @@ console.log(
 
     let mypk = Buffer.from("d0e17d4b31380f96a42b3e9ffc4c1b2a93589a1e51d86d7edc107f602fbc7475", "hex");
 console.log("pk58", bintools.avaSerialize(mypk));
+
+let myassetid = Buffer.from("8a5d2d32e68bc50036e4d086044617fe4a0a0296b274999ba568ea92da46d533", "hex");
+console.log("myassetid", bintools.avaSerialize(myassetid));
